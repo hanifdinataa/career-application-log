@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Riwayat Cari Kerja - Personal Job Application Tracker. Kelola dan pantau seluruh riwayat lamaran pekerjaan Anda dengan mudah dan profesional.">
+  <meta name="theme-color" content="#1e3a8a">
+  <title>Riwayat Cari Kerja - Personal Job Application Tracker</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Sidebar Overlay (Mobile) -->
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+    <!-- SIDEBAR -->
+    <aside id="app-sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <a href="#" class="brand-logo" data-nav-target="dashboard">
+          <div class="brand-icon-box">
+            <i data-lucide="briefcase"></i>
+          </div>
+          <span>Riwayat Cari Kerja</span>
+        </a>
+        <button id="btn-close-sidebar" class="btn-close-sidebar" aria-label="Tutup Menu">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#dashboard" class="nav-link nav-active" data-nav-target="dashboard">
+          <i data-lucide="layout-dashboard"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="#applications" class="nav-link" data-nav-target="applications">
+          <i data-lucide="list-checks"></i>
+          <span>Data Lamaran</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <!-- Tombol Mode Gelap / Terang -->
+        <button id="btn-theme-toggle" class="btn-sidebar-theme" title="Beralih Mode Gelap/Terang">
+          <i data-lucide="moon" id="theme-icon"></i>
+          <span id="theme-text">Mode Gelap</span>
+        </button>
+
+        <button id="btn-open-settings" class="btn-sidebar-settings">
+          <i data-lucide="settings"></i>
+          <span>Pengaturan</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN WRAPPER -->
+    <div class="main-wrapper">
+      <!-- Mobile Topbar -->
+      <header class="topbar">
+        <button id="btn-toggle-sidebar" class="btn-menu-toggle" aria-label="Menu Navigasi">
+          <i data-lucide="menu"></i>
+        </button>
+        <div class="brand-logo" style="font-size: 1.05rem;">
+          <div class="brand-icon-box" style="width: 28px; height: 28px;">
+            <i data-lucide="briefcase" style="width: 16px; height: 16px;"></i>
+          </div>
+          <span>Riwayat Cari Kerja</span>
+        </div>
+        <div class="topbar-actions">
+          <button id="btn-theme-toggle-mobile" class="btn-menu-toggle" aria-label="Ganti Tema" title="Mode Gelap/Terang">
+            <i data-lucide="moon" id="theme-icon-mobile"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- CONTENT CONTAINER -->
+      <main class="content-container">
+
+        <!-- =================================================================
+             VIEW 1: DASHBOARD
+             ================================================================= -->
+        <section id="view-dashboard">
+          <!-- Page Header -->
+          <div class="page-header">
+            <div>
+              <h1 class="page-title">Dashboard Lamaran</h1>
+              <p class="page-subtitle">Pantau progres dan statistik seluruh riwayat lamaran pekerjaan Anda</p>
+            </div>
+          </div>
+
+          <!-- 6 Stat Cards -->
+          <div class="stats-grid">
+            <!-- 1. Total Lamaran -->
+            <div class="stat-card stat-total">
+              <div class="stat-header">
+                <span class="stat-title">Total Lamaran</span>
+                <div class="stat-icon"><i data-lucide="layers"></i></div>
+              </div>
+              <div id="stat-total" class="stat-value">0</div>
+            </div>
+
+            <!-- 2. Menunggu Respons -->
+            <div class="stat-card stat-waiting">
+              <div class="stat-header">
+                <span class="stat-title">Menunggu Respons</span>
+                <div class="stat-icon"><i data-lucide="clock"></i></div>
+              </div>
+              <div id="stat-waiting" class="stat-value">0</div>
+            </div>
+
+            <!-- 3. Interview -->
+            <div class="stat-card stat-interview">
+              <div class="stat-header">
+                <span class="stat-title">Interview</span>
+                <div class="stat-icon"><i data-lucide="users"></i></div>
+              </div>
+              <div id="stat-interview" class="stat-value">0</div>
+            </div>
+
+            <!-- 4. Offering -->
+            <div class="stat-card stat-offering">
+              <div class="stat-header">
+                <span class="stat-title">Offering</span>
+                <div class="stat-icon"><i data-lucide="gift"></i></div>
+              </div>
+              <div id="stat-offering" class="stat-value">0</div>
+            </div>
+
+            <!-- 5. Diterima -->
+            <div class="stat-card stat-accepted">
+              <div class="stat-header">
+                <span class="stat-title">Diterima</span>
+                <div class="stat-icon"><i data-lucide="check-circle-2"></i></div>
+              </div>
+              <div id="stat-accepted" class="stat-value">0</div>
+            </div>
+
+            <!-- 6. Ditolak -->
+            <div class="stat-card stat-rejected">
+              <div class="stat-header">
+                <span class="stat-title">Ditolak</span>
+                <div class="stat-icon"><i data-lucide="x-circle"></i></div>
+              </div>
+              <div id="stat-rejected" class="stat-value">0</div>
+            </div>
+          </div>
+
+          <!-- Charts Grid (2 Charts) -->
+          <div class="charts-grid">
+            <!-- 1. Status Distribution -->
+            <div class="chart-card">
+              <div class="chart-header">
+                <h3 class="chart-title">Distribusi Status Lamaran</h3>
+                <p class="chart-desc">Persentase status tahapan seluruh lamaran pekerjaan</p>
+              </div>
+              <div class="chart-body">
+                <div id="status-chart-empty" class="chart-empty" style="display: none;">
+                  <i data-lucide="pie-chart" class="w-10 h-10"></i>
+                  <span>Belum ada data untuk ditampilkan</span>
+                </div>
+                <canvas id="statusChart"></canvas>
+              </div>
+            </div>
+
+            <!-- 2. Applications by Month -->
+            <div class="chart-card">
+              <div class="chart-header">
+                <h3 class="chart-title">Lamaran Berdasarkan Bulan</h3>
+                <p class="chart-desc">Tren frekuensi lamaran kerja dalam 6 bulan terakhir</p>
+              </div>
+              <div class="chart-body">
+                <div id="monthly-chart-empty" class="chart-empty" style="display: none;">
+                  <i data-lucide="bar-chart-3" class="w-10 h-10"></i>
+                  <span>Belum ada data untuk ditampilkan</span>
+                </div>
+                <canvas id="monthlyChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Applications Section -->
+          <div class="table-card">
+            <div class="table-card-header">
+              <div>
+                <h3 class="font-semibold text-slate-800" style="font-size: 1.05rem;">Riwayat Lamaran Terbaru</h3>
+                <p class="text-xs text-slate-500">Seluruh riwayat aktivitas lamaran pekerjaan</p>
+              </div>
+              <button id="btn-view-all-apps" class="btn btn-secondary btn-sm">
+                <span>Lihat Seluruh Data Lamaran</span>
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+
+            <div class="table-responsive">
+              <table class="custom-table">
+                <thead>
+                  <tr>
+                    <th>Nama Perusahaan</th>
+                    <th>Posisi Pekerjaan</th>
+                    <th>Tanggal Melamar</th>
+                    <th>Sistem Kerja</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="recent-applications-body">
+                  <!-- Data terbaru diinject via JS -->
+                </tbody>
+              </table>
+            </div>
+
+            <div id="recent-applications-empty" class="empty-state" style="display: none;">
+              <i data-lucide="inbox" class="empty-state-icon"></i>
+              <h4 class="empty-state-title">Belum Ada Riwayat Lamaran</h4>
+              <p class="empty-state-desc">Belum ada aktivitas lamaran yang tercatat.</p>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- =================================================================
+             VIEW 2: DATA LAMARAN
+             ================================================================= -->
+        <section id="view-applications" style="display: none;">
+          <!-- Page Header -->
+          <div class="page-header">
+            <div>
+              <h1 class="page-title">Data Lamaran Pekerjaan</h1>
+              <p class="page-subtitle">Kelola, cari, saring, dan perbarui seluruh riwayat lamaran Anda</p>
+            </div>
+            <button id="btn-add-application" class="btn btn-primary">
+              <i data-lucide="plus"></i>
+              <span>+ Tambah Lamaran</span>
+            </button>
+          </div>
+
+          <!-- Filter & Search Bar -->
+          <div class="filter-bar">
+            <!-- Search -->
+            <div class="search-wrapper">
+              <i data-lucide="search"></i>
+              <input type="text" id="search-input" class="search-input" placeholder="Cari nama perusahaan atau posisi...">
+            </div>
+
+            <!-- Filter Status -->
+            <div>
+              <select id="filter-status" class="select-control">
+                <option value="all">Semua Status</option>
+                <option value="Sudah Melamar">Sudah Melamar</option>
+                <option value="Dalam Review">Dalam Review</option>
+                <option value="Interview">Interview</option>
+                <option value="Tes Seleksi">Tes Seleksi</option>
+                <option value="Offering">Offering</option>
+                <option value="Diterima">Diterima</option>
+                <option value="Ditolak">Ditolak</option>
+                <option value="Mengundurkan Diri">Mengundurkan Diri</option>
+                <option value="Tidak Ada Kabar dari HRD/PT">Tidak Ada Kabar dari HRD/PT</option>
+              </select>
+            </div>
+
+            <!-- Filter Work Mode -->
+            <div>
+              <select id="filter-workmode" class="select-control">
+                <option value="all">Semua Sistem Kerja</option>
+                <option value="Remote">Remote</option>
+                <option value="Hybrid">Hybrid</option>
+                <option value="WFO">WFO</option>
+              </select>
+            </div>
+
+            <!-- Sort Date -->
+            <div>
+              <select id="sort-date" class="select-control">
+                <option value="desc">Tanggal: Terbaru</option>
+                <option value="asc">Tanggal: Terlama</option>
+              </select>
+            </div>
+
+            <!-- Reset Filter Button -->
+            <div>
+              <button id="btn-reset-filter" class="btn btn-secondary" title="Reset Semua Filter">
+                <i data-lucide="rotate-ccw"></i>
+                <span>Reset</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Applications Table Card -->
+          <div class="table-card">
+            <div class="table-card-header">
+              <h3 class="font-semibold text-slate-800" style="font-size: 1.05rem;">Daftar Lamaran</h3>
+              <span id="applications-count-badge" class="badge" style="background-color: #f1f5f9; color: #475569; border: 1px solid #e2e8f0;">
+                0 Lamaran
+              </span>
+            </div>
+
+            <div id="applications-table-container" class="table-responsive">
+              <table class="custom-table">
+                <thead>
+                  <tr>
+                    <th style="width: 50px;" class="text-center">No.</th>
+                    <th>Nama Perusahaan</th>
+                    <th>Posisi</th>
+                    <th>Lokasi</th>
+                    <th>Sistem Kerja</th>
+                    <th>Tanggal Melamar</th>
+                    <th>Sumber Lowongan</th>
+                    <th>Status</th>
+                    <th style="width: 110px;">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody id="applications-table-body">
+                  <!-- Data rows diinject via JS -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Empty State for Table -->
+            <div id="applications-empty-state" class="empty-state" style="display: none;">
+              <i data-lucide="file-search" class="empty-state-icon"></i>
+              <h4 class="empty-state-title">Data Tidak Ditemukan</h4>
+              <p id="empty-state-message" class="empty-state-desc">Belum ada data lamaran yang dicatat atau data tidak sesuai dengan filter pencarian Anda.</p>
+              <button id="btn-add-from-empty" class="btn btn-primary btn-sm">
+                <i data-lucide="plus"></i>
+                <span>+ Tambah Lamaran Baru</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- FOOTER -->
+      <footer class="app-footer">
+        <div class="footer-content">
+          <p>Dibuat oleh <strong>Hanif Dinata, A.Md.T.</strong></p>
+          <div class="footer-brand">
+            <i data-lucide="briefcase" style="width: 14px; height: 14px;"></i>
+            <span>Riwayat Cari Kerja &copy; 2026</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <!-- =====================================================================
+       MODAL 1: FORM TAMBAH / EDIT LAMARAN
+       ===================================================================== -->
+  <div id="application-modal" class="modal-backdrop">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="modal-title" class="modal-title">Tambah Lamaran Pekerjaan</h3>
+        <button id="btn-close-modal" class="btn-close-modal" aria-label="Tutup Modal">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <form id="application-form">
+        <div class="modal-body">
+          <div class="form-grid">
+            <!-- 1. Nama Perusahaan (Wajib) -->
+            <div class="form-group col-span-2">
+              <label for="form-company-name" class="form-label">
+                Nama Perusahaan <span class="required">*</span>
+              </label>
+              <input type="text" id="form-company-name" class="form-control" placeholder="Contoh: PT Telkom Indonesia" required>
+            </div>
+
+            <!-- 2. Posisi yang Dilamar (Wajib) -->
+            <div class="form-group col-span-2">
+              <label for="form-position" class="form-label">
+                Posisi yang Dilamar <span class="required">*</span>
+              </label>
+              <input type="text" id="form-position" class="form-control" placeholder="Contoh: IT Support / Web Developer" required>
+            </div>
+
+            <!-- 3. Lokasi (Opsional) -->
+            <div class="form-group">
+              <label for="form-location" class="form-label">Lokasi</label>
+              <input type="text" id="form-location" class="form-control" placeholder="Contoh: Padang / Jakarta">
+            </div>
+
+            <!-- 4. Sistem Kerja (workMode) -->
+            <div class="form-group">
+              <label for="form-workmode" class="form-label">Sistem Kerja</label>
+              <select id="form-workmode" class="form-control">
+                <option value="Remote">Remote (Work From Home)</option>
+                <option value="Hybrid">Hybrid</option>
+                <option value="WFO" selected>WFO (Work From Office)</option>
+              </select>
+            </div>
+
+            <!-- 5. Tanggal Melamar (Wajib) -->
+            <div class="form-group">
+              <label for="form-application-date" class="form-label">
+                Tanggal Melamar <span class="required">*</span>
+              </label>
+              <input type="date" id="form-application-date" class="form-control" required>
+            </div>
+
+            <!-- 7. Status Lamaran -->
+            <div class="form-group">
+              <label for="form-status" class="form-label">Status Lamaran</label>
+              <select id="form-status" class="form-control">
+                <option value="Sudah Melamar" selected>Sudah Melamar</option>
+                <option value="Dalam Review">Dalam Review</option>
+                <option value="Interview">Interview</option>
+                <option value="Tes Seleksi">Tes Seleksi</option>
+                <option value="Offering">Offering</option>
+                <option value="Diterima">Diterima</option>
+                <option value="Ditolak">Ditolak</option>
+                <option value="Mengundurkan Diri">Mengundurkan Diri</option>
+                <option value="Tidak Ada Kabar dari HRD/PT">Tidak Ada Kabar dari HRD/PT</option>
+              </select>
+            </div>
+
+            <!-- 6. Sumber Lowongan (Opsional) -->
+            <div class="form-group col-span-2">
+              <label for="form-job-source" class="form-label">Sumber Lowongan</label>
+              <input type="text" id="form-job-source" class="form-control" placeholder="Contoh: LinkedIn – https://linkedin.com/jobs/...">
+            </div>
+
+            <!-- 8. Catatan (Opsional) -->
+            <div class="form-group col-span-2">
+              <label for="form-notes" class="form-label">Catatan Tambahan</label>
+              <textarea id="form-notes" class="form-control" rows="3" placeholder="Informasi kontak recruiter, tahapan tes, atau catatan lain..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" id="btn-cancel-modal" class="btn btn-secondary">Batal</button>
+          <button type="submit" id="btn-save-modal" class="btn btn-primary">Simpan Lamaran</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- =====================================================================
+       MODAL 2: DETAIL & CATATAN LAMARAN
+       ===================================================================== -->
+  <div id="detail-modal" class="modal-backdrop">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title">Detail Lamaran Pekerjaan</h3>
+        <button id="btn-close-detail" class="btn-close-modal" aria-label="Tutup Modal">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="modal-body" id="detail-modal-content">
+        <!-- Injected via JS -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="Applications.closeDetailModal()">Tutup</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =====================================================================
+       MODAL 3: KONFIRMASI HAPUS
+       ===================================================================== -->
+  <div id="delete-modal" class="modal-backdrop">
+    <div class="modal-box" style="max-width: 440px;">
+      <div class="modal-header">
+        <h3 class="modal-title text-slate-800" style="display: flex; align-items: center; gap: 0.5rem;">
+          <i data-lucide="alert-triangle" style="color: #dc2626; width: 20px; height: 20px;"></i>
+          <span>Konfirmasi Hapus</span>
+        </h3>
+      </div>
+      <div class="modal-body">
+        <p id="delete-modal-text" class="text-sm text-slate-600 leading-relaxed">
+          Apakah Anda yakin ingin menghapus data lamaran ini? Tindakan ini tidak dapat dibatalkan.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="btn-cancel-delete" class="btn btn-secondary">Batal</button>
+        <button type="button" id="btn-confirm-delete" class="btn btn-danger">Ya, Hapus Data</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =====================================================================
+       MODAL 4: PENGATURAN & BACKUP / RESTORE
+       ===================================================================== -->
+  <div id="settings-modal" class="modal-backdrop">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title">Pengaturan</h3>
+        <button id="btn-close-settings" class="btn-close-modal" aria-label="Tutup Modal">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="settings-list">
+          <!-- 1. Export JSON -->
+          <div class="settings-item">
+            <div class="settings-item-info">
+              <h5>Backup Data</h5>
+              <p>Unduh data lamaran ke perangkat, type file .json.</p>
+            </div>
+            <button id="btn-export-json" class="btn btn-secondary btn-sm">
+              <i data-lucide="download"></i>
+              <span>Export JSON</span>
+            </button>
+          </div>
+
+          <!-- 2. Import JSON -->
+          <div class="settings-item">
+            <div class="settings-item-info">
+              <h5>Restore Data</h5>
+              <p>Pulihkan data yang telah di unduh kesini</p>
+              <input type="file" id="input-import-json" accept=".json" style="display: none;">
+            </div>
+            <button id="btn-trigger-import" class="btn btn-secondary btn-sm">
+              <i data-lucide="upload"></i>
+              <span>Import JSON</span>
+            </button>
+          </div>
+
+          <!-- 3. Export CSV -->
+          <div class="settings-item">
+            <div class="settings-item-info">
+              <h5>Backup ke Spreadsheet</h5>
+              <p>Unduh data dalam format .csv</p>
+            </div>
+            <button id="btn-export-csv" class="btn btn-secondary btn-sm">
+              <i data-lucide="file-spreadsheet"></i>
+              <span>Export CSV</span>
+            </button>
+          </div>
+
+          <!-- 4. Load Sample Data (Disabled) -->
+          <div class="settings-item">
+            <div class="settings-item-info">
+              <h5 style="color: var(--color-text-muted); opacity: 0.75;">Masukan Lamaran Random</h5>
+            </div>
+            <button id="btn-load-sample-data" class="btn btn-secondary btn-sm" disabled style="opacity: 0.5; cursor: not-allowed; pointer-events: none;" title="Terkunci">
+              <i data-lucide="lock"></i>
+            </button>
+          </div>
+
+          <!-- 5. Clear All Data -->
+          <div class="settings-item">
+            <div class="settings-item-info">
+              <h5 style="color: #dc2626;">Hapus Data</h5>
+              <p>Hapus seluruh riwayat lamaran pekerjaan dari browser ini secara permanen.</p>
+            </div>
+            <button id="btn-clear-all-data" class="btn btn-danger btn-sm">
+              <i data-lucide="trash-2"></i>
+              <span>Hapus Data</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="document.getElementById('settings-modal').classList.remove('active'); document.body.classList.remove('modal-open');">
+          Tutup
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Toast Notifications Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- JavaScript Modules (Relative Paths) -->
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+  <script src="assets/js/applications.js"></script>
+  <script src="assets/js/app.js"></script>
+
+</body>
+</html>
