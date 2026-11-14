@@ -4,7 +4,7 @@
  */
 
 const STORAGE_KEY = 'jobTrackerDB';
-const SEED_VERSION = 'v4_seed_22_all';
+const SEED_VERSION = 'v5_seed_22_padang';
 
 const DEFAULT_INITIAL_APPLICATIONS = [
   {
@@ -206,7 +206,7 @@ const DEFAULT_INITIAL_APPLICATIONS = [
     id: 'app_16',
     companyName: 'PT Jaya Indah Prakarya',
     position: 'Quality Control (QC Staff)',
-    location: '-',
+    location: 'Padang',
     workMode: 'WFO',
     applicationDate: '2026-11-14',
     jobSource: 'Blogo id',
@@ -219,7 +219,7 @@ const DEFAULT_INITIAL_APPLICATIONS = [
     id: 'app_17',
     companyName: 'PT Guna Adi Putra',
     position: 'IT Programmer & Support',
-    location: '-',
+    location: 'Padang',
     workMode: 'WFO',
     applicationDate: '2026-11-14',
     jobSource: 'Blogo id',
@@ -232,7 +232,7 @@ const DEFAULT_INITIAL_APPLICATIONS = [
     id: 'app_18',
     companyName: 'Enditama Group',
     position: 'IT Admin',
-    location: '-',
+    location: 'Padang',
     workMode: 'WFO',
     applicationDate: '2026-11-14',
     jobSource: 'Blogo id',
@@ -245,7 +245,7 @@ const DEFAULT_INITIAL_APPLICATIONS = [
     id: 'app_19',
     companyName: 'Green Outsource',
     position: 'IT Staff',
-    location: '-',
+    location: 'Padang',
     workMode: 'WFO',
     applicationDate: '2026-11-14',
     jobSource: 'Blogo id',
@@ -258,7 +258,7 @@ const DEFAULT_INITIAL_APPLICATIONS = [
     id: 'app_20',
     companyName: 'PT Trisula Indah Sejati',
     position: 'IT Programmer',
-    location: '-',
+    location: 'Padang',
     workMode: 'WFO',
     applicationDate: '2026-11-14',
     jobSource: 'Blogo id',
@@ -271,7 +271,7 @@ const DEFAULT_INITIAL_APPLICATIONS = [
     id: 'app_21',
     companyName: 'PT Guna Kencana Logistik',
     position: 'Staff Administrasi Data',
-    location: '-',
+    location: 'Padang',
     workMode: 'WFO',
     applicationDate: '2026-11-14',
     jobSource: 'Blogo id',
@@ -284,7 +284,7 @@ const DEFAULT_INITIAL_APPLICATIONS = [
     id: 'app_22',
     companyName: 'PT Guna Adi Putra',
     position: 'Staff Administrasi',
-    location: '-',
+    location: 'Padang',
     workMode: 'WFO',
     applicationDate: '2026-11-14',
     jobSource: 'Blogo id',
