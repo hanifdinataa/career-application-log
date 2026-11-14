@@ -4,7 +4,7 @@
  */
 
 const STORAGE_KEY = 'jobTrackerDB';
-const SEED_VERSION = 'v3_seed_15_all';
+const SEED_VERSION = 'v4_seed_22_all';
 
 const DEFAULT_INITIAL_APPLICATIONS = [
   {
@@ -201,6 +201,97 @@ const DEFAULT_INITIAL_APPLICATIONS = [
     notes: '',
     createdAt: '2026-10-12T09:00:00.000Z',
     updatedAt: '2026-10-12T09:00:00.000Z'
+  },
+  {
+    id: 'app_16',
+    companyName: 'PT Jaya Indah Prakarya',
+    position: 'Quality Control (QC Staff)',
+    location: '-',
+    workMode: 'WFO',
+    applicationDate: '2026-11-14',
+    jobSource: 'Blogo id',
+    status: 'Sudah Melamar',
+    notes: '',
+    createdAt: '2026-11-14T08:00:00.000Z',
+    updatedAt: '2026-11-14T08:00:00.000Z'
+  },
+  {
+    id: 'app_17',
+    companyName: 'PT Guna Adi Putra',
+    position: 'IT Programmer & Support',
+    location: '-',
+    workMode: 'WFO',
+    applicationDate: '2026-11-14',
+    jobSource: 'Blogo id',
+    status: 'Sudah Melamar',
+    notes: '',
+    createdAt: '2026-11-14T08:15:00.000Z',
+    updatedAt: '2026-11-14T08:15:00.000Z'
+  },
+  {
+    id: 'app_18',
+    companyName: 'Enditama Group',
+    position: 'IT Admin',
+    location: '-',
+    workMode: 'WFO',
+    applicationDate: '2026-11-14',
+    jobSource: 'Blogo id',
+    status: 'Sudah Melamar',
+    notes: '',
+    createdAt: '2026-11-14T08:30:00.000Z',
+    updatedAt: '2026-11-14T08:30:00.000Z'
+  },
+  {
+    id: 'app_19',
+    companyName: 'Green Outsource',
+    position: 'IT Staff',
+    location: '-',
+    workMode: 'WFO',
+    applicationDate: '2026-11-14',
+    jobSource: 'Blogo id',
+    status: 'Sudah Melamar',
+    notes: '',
+    createdAt: '2026-11-14T08:45:00.000Z',
+    updatedAt: '2026-11-14T08:45:00.000Z'
+  },
+  {
+    id: 'app_20',
+    companyName: 'PT Trisula Indah Sejati',
+    position: 'IT Programmer',
+    location: '-',
+    workMode: 'WFO',
+    applicationDate: '2026-11-14',
+    jobSource: 'Blogo id',
+    status: 'Sudah Melamar',
+    notes: '',
+    createdAt: '2026-11-14T09:00:00.000Z',
+    updatedAt: '2026-11-14T09:00:00.000Z'
+  },
+  {
+    id: 'app_21',
+    companyName: 'PT Guna Kencana Logistik',
+    position: 'Staff Administrasi Data',
+    location: '-',
+    workMode: 'WFO',
+    applicationDate: '2026-11-14',
+    jobSource: 'Blogo id',
+    status: 'Sudah Melamar',
+    notes: '',
+    createdAt: '2026-11-14T09:15:00.000Z',
+    updatedAt: '2026-11-14T09:15:00.000Z'
+  },
+  {
+    id: 'app_22',
+    companyName: 'PT Guna Adi Putra',
+    position: 'Staff Administrasi',
+    location: '-',
+    workMode: 'WFO',
+    applicationDate: '2026-11-14',
+    jobSource: 'Blogo id',
+    status: 'Sudah Melamar',
+    notes: '',
+    createdAt: '2026-11-14T09:30:00.000Z',
+    updatedAt: '2026-11-14T09:30:00.000Z'
   }
 ];
 
@@ -223,7 +314,7 @@ const Storage = {
         return { applications: [...DEFAULT_INITIAL_APPLICATIONS] };
       }
 
-      // Sinkronisasi seluruh 15 data agar sama di seluruh perangkat
+      // Sinkronisasi seluruh 22 data agar sama di seluruh perangkat
       const seedFlag = localStorage.getItem('jobTrackerDB_seed_ver');
       if (seedFlag !== SEED_VERSION) {
         parsed.applications = [...DEFAULT_INITIAL_APPLICATIONS];
