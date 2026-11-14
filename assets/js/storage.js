@@ -4,7 +4,7 @@
  */
 
 const STORAGE_KEY = 'jobTrackerDB';
-const SEED_VERSION = 'v6_seed_23_jobfair';
+const SEED_VERSION = 'v7_seed_24_unp';
 
 const DEFAULT_INITIAL_APPLICATIONS = [
   {
@@ -305,6 +305,19 @@ const DEFAULT_INITIAL_APPLICATIONS = [
     notes: '',
     createdAt: '2026-11-14T09:45:00.000Z',
     updatedAt: '2026-11-14T09:45:00.000Z'
+  },
+  {
+    id: 'app_24',
+    companyName: 'UNP',
+    position: 'Programmer (AI & Web Developer)',
+    location: 'Padang',
+    workMode: 'WFO',
+    applicationDate: '2026-11-14',
+    jobSource: 'Instagram',
+    status: 'Sudah Melamar',
+    notes: '',
+    createdAt: '2026-11-14T10:00:00.000Z',
+    updatedAt: '2026-11-14T10:00:00.000Z'
   }
 ];
 
@@ -327,7 +340,7 @@ const Storage = {
         return { applications: [...DEFAULT_INITIAL_APPLICATIONS] };
       }
 
-      // Sinkronisasi seluruh 23 data agar sama di seluruh perangkat
+      // Sinkronisasi seluruh 24 data agar sama di seluruh perangkat
       const seedFlag = localStorage.getItem('jobTrackerDB_seed_ver');
       if (seedFlag !== SEED_VERSION) {
         parsed.applications = [...DEFAULT_INITIAL_APPLICATIONS];
