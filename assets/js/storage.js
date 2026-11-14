@@ -4,7 +4,7 @@
  */
 
 const STORAGE_KEY = 'jobTrackerDB';
-const SEED_VERSION = 'v5_seed_22_padang';
+const SEED_VERSION = 'v6_seed_23_jobfair';
 
 const DEFAULT_INITIAL_APPLICATIONS = [
   {
@@ -292,6 +292,19 @@ const DEFAULT_INITIAL_APPLICATIONS = [
     notes: '',
     createdAt: '2026-11-14T09:30:00.000Z',
     updatedAt: '2026-11-14T09:30:00.000Z'
+  },
+  {
+    id: 'app_23',
+    companyName: 'PT. Sumberdaya Dian Mandiri',
+    position: 'Administrasi IT',
+    location: 'Padang',
+    workMode: 'WFO',
+    applicationDate: '2026-11-14',
+    jobSource: 'Jobfair',
+    status: 'Sudah Melamar',
+    notes: '',
+    createdAt: '2026-11-14T09:45:00.000Z',
+    updatedAt: '2026-11-14T09:45:00.000Z'
   }
 ];
 
@@ -314,7 +327,7 @@ const Storage = {
         return { applications: [...DEFAULT_INITIAL_APPLICATIONS] };
       }
 
-      // Sinkronisasi seluruh 22 data agar sama di seluruh perangkat
+      // Sinkronisasi seluruh 23 data agar sama di seluruh perangkat
       const seedFlag = localStorage.getItem('jobTrackerDB_seed_ver');
       if (seedFlag !== SEED_VERSION) {
         parsed.applications = [...DEFAULT_INITIAL_APPLICATIONS];
