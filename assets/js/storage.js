@@ -4,7 +4,7 @@
  */
 
 const STORAGE_KEY = 'jobTrackerDB';
-const SEED_VERSION = 'v8_seed_25_pegadaian';
+const SEED_VERSION = 'v9_seed_update_status';
 
 const DEFAULT_INITIAL_APPLICATIONS = [
   {
@@ -210,7 +210,7 @@ const DEFAULT_INITIAL_APPLICATIONS = [
     workMode: 'WFO',
     applicationDate: '2026-11-14',
     jobSource: 'Blogo id',
-    status: 'Sudah Melamar',
+    status: 'Tidak Ada Kabar dari HRD/PT',
     notes: '',
     createdAt: '2026-11-14T08:00:00.000Z',
     updatedAt: '2026-11-14T08:00:00.000Z'
@@ -223,7 +223,7 @@ const DEFAULT_INITIAL_APPLICATIONS = [
     workMode: 'WFO',
     applicationDate: '2026-11-14',
     jobSource: 'Blogo id',
-    status: 'Sudah Melamar',
+    status: 'Tidak Ada Kabar dari HRD/PT',
     notes: '',
     createdAt: '2026-11-14T08:15:00.000Z',
     updatedAt: '2026-11-14T08:15:00.000Z'
@@ -236,7 +236,7 @@ const DEFAULT_INITIAL_APPLICATIONS = [
     workMode: 'WFO',
     applicationDate: '2026-11-14',
     jobSource: 'Blogo id',
-    status: 'Sudah Melamar',
+    status: 'Tidak Ada Kabar dari HRD/PT',
     notes: '',
     createdAt: '2026-11-14T08:30:00.000Z',
     updatedAt: '2026-11-14T08:30:00.000Z'
@@ -249,7 +249,7 @@ const DEFAULT_INITIAL_APPLICATIONS = [
     workMode: 'WFO',
     applicationDate: '2026-11-14',
     jobSource: 'Blogo id',
-    status: 'Sudah Melamar',
+    status: 'Tidak Ada Kabar dari HRD/PT',
     notes: '',
     createdAt: '2026-11-14T08:45:00.000Z',
     updatedAt: '2026-11-14T08:45:00.000Z'
@@ -262,7 +262,7 @@ const DEFAULT_INITIAL_APPLICATIONS = [
     workMode: 'WFO',
     applicationDate: '2026-11-14',
     jobSource: 'Blogo id',
-    status: 'Sudah Melamar',
+    status: 'Tidak Ada Kabar dari HRD/PT',
     notes: '',
     createdAt: '2026-11-14T09:00:00.000Z',
     updatedAt: '2026-11-14T09:00:00.000Z'
@@ -275,7 +275,7 @@ const DEFAULT_INITIAL_APPLICATIONS = [
     workMode: 'WFO',
     applicationDate: '2026-11-14',
     jobSource: 'Blogo id',
-    status: 'Sudah Melamar',
+    status: 'Tidak Ada Kabar dari HRD/PT',
     notes: '',
     createdAt: '2026-11-14T09:15:00.000Z',
     updatedAt: '2026-11-14T09:15:00.000Z'
@@ -288,7 +288,7 @@ const DEFAULT_INITIAL_APPLICATIONS = [
     workMode: 'WFO',
     applicationDate: '2026-11-14',
     jobSource: 'Blogo id',
-    status: 'Sudah Melamar',
+    status: 'Tidak Ada Kabar dari HRD/PT',
     notes: '',
     createdAt: '2026-11-14T09:30:00.000Z',
     updatedAt: '2026-11-14T09:30:00.000Z'
@@ -301,7 +301,7 @@ const DEFAULT_INITIAL_APPLICATIONS = [
     workMode: 'WFO',
     applicationDate: '2026-11-14',
     jobSource: 'Jobfair',
-    status: 'Sudah Melamar',
+    status: 'Tidak Ada Kabar dari HRD/PT',
     notes: '',
     createdAt: '2026-11-14T09:45:00.000Z',
     updatedAt: '2026-11-14T09:45:00.000Z'
@@ -314,7 +314,7 @@ const DEFAULT_INITIAL_APPLICATIONS = [
     workMode: 'WFO',
     applicationDate: '2026-11-14',
     jobSource: 'Instagram',
-    status: 'Sudah Melamar',
+    status: 'Tidak Ada Kabar dari HRD/PT',
     notes: '',
     createdAt: '2026-11-14T10:00:00.000Z',
     updatedAt: '2026-11-14T10:00:00.000Z'
