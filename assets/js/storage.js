@@ -4,7 +4,7 @@
  */
 
 const STORAGE_KEY = 'jobTrackerDB';
-const SEED_VERSION = 'v7_seed_24_unp';
+const SEED_VERSION = 'v8_seed_25_pegadaian';
 
 const DEFAULT_INITIAL_APPLICATIONS = [
   {
@@ -318,6 +318,19 @@ const DEFAULT_INITIAL_APPLICATIONS = [
     notes: '',
     createdAt: '2026-11-14T10:00:00.000Z',
     updatedAt: '2026-11-14T10:00:00.000Z'
+  },
+  {
+    id: 'app_25',
+    companyName: 'PT Pegadaian',
+    position: 'Staff Operasional / IT',
+    location: 'Padang',
+    workMode: 'WFO',
+    applicationDate: '2026-11-22',
+    jobSource: 'Google Form',
+    status: 'Sudah Melamar',
+    notes: '',
+    createdAt: '2026-11-22T08:00:00.000Z',
+    updatedAt: '2026-11-22T08:00:00.000Z'
   }
 ];
 
@@ -340,7 +353,7 @@ const Storage = {
         return { applications: [...DEFAULT_INITIAL_APPLICATIONS] };
       }
 
-      // Sinkronisasi seluruh 24 data agar sama di seluruh perangkat
+      // Sinkronisasi seluruh 25 data agar sama di seluruh perangkat
       const seedFlag = localStorage.getItem('jobTrackerDB_seed_ver');
       if (seedFlag !== SEED_VERSION) {
         parsed.applications = [...DEFAULT_INITIAL_APPLICATIONS];
