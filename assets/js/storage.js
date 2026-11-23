@@ -4,7 +4,7 @@
  */
 
 const STORAGE_KEY = 'jobTrackerDB';
-const SEED_VERSION = 'v9_seed_update_status';
+const SEED_VERSION = 'v10_seed_26_budiman';
 
 const DEFAULT_INITIAL_APPLICATIONS = [
   {
@@ -331,6 +331,19 @@ const DEFAULT_INITIAL_APPLICATIONS = [
     notes: '',
     createdAt: '2026-11-22T08:00:00.000Z',
     updatedAt: '2026-11-22T08:00:00.000Z'
+  },
+  {
+    id: 'app_26',
+    companyName: 'Budiman Swalayan',
+    position: 'Staff IT',
+    location: 'Padang',
+    workMode: 'WFO',
+    applicationDate: '2026-11-23',
+    jobSource: 'Google Form',
+    status: 'Sudah Melamar',
+    notes: '',
+    createdAt: '2026-11-23T08:00:00.000Z',
+    updatedAt: '2026-11-23T08:00:00.000Z'
   }
 ];
 
@@ -353,7 +366,7 @@ const Storage = {
         return { applications: [...DEFAULT_INITIAL_APPLICATIONS] };
       }
 
-      // Sinkronisasi seluruh 25 data agar sama di seluruh perangkat
+      // Sinkronisasi seluruh 26 data agar sama di seluruh perangkat
       const seedFlag = localStorage.getItem('jobTrackerDB_seed_ver');
       if (seedFlag !== SEED_VERSION) {
         parsed.applications = [...DEFAULT_INITIAL_APPLICATIONS];
