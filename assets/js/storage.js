@@ -4,7 +4,7 @@
  */
 
 const STORAGE_KEY = 'jobTrackerDB';
-const SEED_VERSION = 'v10_seed_26_budiman';
+const SEED_VERSION = 'v11_seed_27_asiantech';
 
 const DEFAULT_INITIAL_APPLICATIONS = [
   {
@@ -344,6 +344,19 @@ const DEFAULT_INITIAL_APPLICATIONS = [
     notes: '',
     createdAt: '2026-11-23T08:00:00.000Z',
     updatedAt: '2026-11-23T08:00:00.000Z'
+  },
+  {
+    id: 'app_27',
+    companyName: 'PT Asian Technology',
+    position: 'Junior QA',
+    location: 'Padang',
+    workMode: 'WFO',
+    applicationDate: '2026-11-24',
+    jobSource: 'IG',
+    status: 'Sudah Melamar',
+    notes: 'Email fika@asian-technology.com & WA Fika 0822-6506-6398. Pengalaman QA Tester di Neuronworks.',
+    createdAt: '2026-11-24T08:00:00.000Z',
+    updatedAt: '2026-11-24T08:00:00.000Z'
   }
 ];
 
